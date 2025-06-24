@@ -273,6 +273,8 @@ class _HomePageState extends State<HomePage> {
   final Map<String, List<FocusNode>> _rowFocusNodes = {};
   final ScrollController _scrollController = ScrollController();
   final Map<String, GlobalKey> _rowKeys = {};
+  // Add horizontal scroll controllers for each row
+  final Map<String, ScrollController> _horizontalScrollControllers = {};
 
   @override
   void initState() {
@@ -281,6 +283,7 @@ class _HomePageState extends State<HomePage> {
     categories.forEach((key, value) {
       _rowFocusNodes[key] = List.generate(value.length, (_) => FocusNode());
       _rowKeys[key] = GlobalKey();
+      _horizontalScrollControllers[key] = ScrollController();
     });
     // Set initial focus to the first card in the first row
     final firstRowKey = categories.keys.first;
@@ -294,6 +297,9 @@ class _HomePageState extends State<HomePage> {
       for (var node in nodes) {
         node.dispose();
       }
+    }
+    for (var controller in _horizontalScrollControllers.values) {
+      controller.dispose();
     }
     super.dispose();
   }
@@ -327,6 +333,7 @@ class _HomePageState extends State<HomePage> {
                   child: SizedBox(
                     height: 180,
                     child: ListView.separated(
+                      controller: _horizontalScrollControllers[rowKey],
                       scrollDirection: Axis.horizontal,
                       itemCount: entry.value.length,
                       separatorBuilder: (context, index) =>
@@ -337,6 +344,21 @@ class _HomePageState extends State<HomePage> {
                           focusNode: focusNodes[index],
                           onFocusChange: (hasFocus) {
                             if (hasFocus) {
+                              // Scroll the horizontal list to show the focused card
+                              final controller =
+                                  _horizontalScrollControllers[rowKey];
+                              if (controller != null) {
+                                final cardWidth =
+                                    132.0; // 120 width + 12 spacing
+                                final scrollPosition = index * cardWidth;
+                                controller.animateTo(
+                                  scrollPosition,
+                                  duration: const Duration(milliseconds: 300),
+                                  curve: Curves.easeInOut,
+                                );
+                              }
+
+                              // Also ensure the row is visible in the main scroll
                               final context = _rowKeys[rowKey]?.currentContext;
                               if (context != null) {
                                 Scrollable.ensureVisible(
