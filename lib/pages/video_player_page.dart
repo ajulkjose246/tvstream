@@ -27,6 +27,8 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
   // Auto-hide controls
   bool _showControls = true;
   Timer? _controlsTimer;
+  // Buffering state
+  bool _isBuffering = false;
   // Focus nodes for remote/keyboard navigation
   final FocusNode _rewindFocusNode = FocusNode();
   final FocusNode _playPauseFocusNode = FocusNode();
@@ -96,6 +98,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
       setState(() {
         _position = _controller!.value.position;
         _isPlaying = _controller!.value.isPlaying;
+        _isBuffering = _controller!.value.isBuffering;
       });
     }
   }
@@ -206,6 +209,31 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
                         ),
                       ),
                     ),
+                    // Buffering indicator overlay
+                    if (_isBuffering)
+                      Container(
+                        color: Colors.black54,
+                        child: const Center(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(
+                                color: Colors.white,
+                                strokeWidth: 3,
+                              ),
+                              SizedBox(height: 16),
+                              Text(
+                                'Buffering...',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     if (_showControls) ...[
                       // Controls overlay with Focus
                       Positioned(

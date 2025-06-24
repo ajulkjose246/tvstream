@@ -20,12 +20,10 @@ class MovieDetailsPage extends StatelessWidget {
 
   void _playMovie(BuildContext context) {
     // Use local asset video file
-    const String localVideoPath =
-        "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4";
 
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (_) => VideoPlayerPage(title: title, videoUrl: localVideoPath),
+        builder: (_) => VideoPlayerPage(title: title, videoUrl: videoUrl),
       ),
     );
   }
@@ -206,28 +204,6 @@ class MovieDetailsPage extends StatelessWidget {
                   const SizedBox(height: 20),
 
                   // Trailer button
-                  SizedBox(
-                    width: double.infinity,
-                    child: ElevatedButton.icon(
-                      onPressed: _launchTrailer,
-                      icon: const Icon(Icons.movie, size: 24),
-                      label: const Text(
-                        'WATCH TRAILER',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.grey[800],
-                        foregroundColor: Colors.white,
-                        padding: const EdgeInsets.symmetric(vertical: 16),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-                  ),
                 ],
               ),
             ),
