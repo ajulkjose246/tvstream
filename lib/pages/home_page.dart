@@ -166,7 +166,7 @@ class _HomePageState extends State<HomePage> {
           "Diane Keaton",
         ],
         "videoUrl":
-            "https://movie.requestbot.workers.dev/1603568/The.Godfather.1972.cultcinema1.720p.BluRay.x265.HEVC-PSA.mkv?hash=AgADtQ",
+            "https://movie.requestbot.workers.dev/1603763/talkiesmedia+-+The+Godfather+1972.mp4.mp4?hash=AgADVA",
       },
       {
         "title": "The Dark Knight",
@@ -198,7 +198,7 @@ class _HomePageState extends State<HomePage> {
           "Ving Rhames",
         ],
         "videoUrl":
-            "https://movie.requestbot.workers.dev/1603593/%5BCC%5D.Pulp.Fiction.1994.720p.BrRip.x265.HEVCBay.mkv?hash=AgADfg",
+            "https://file-to-link2bot-5c5b7c68b922.herokuapp.com/dl/685d5496ea34f66d5617fbc6",
       },
     ],
     "Malayalam": [
@@ -467,6 +467,48 @@ class _HomePageState extends State<HomePage> {
                                           width: 120,
                                           height: 140,
                                           fit: BoxFit.cover,
+                                          loadingBuilder:
+                                              (
+                                                context,
+                                                child,
+                                                loadingProgress,
+                                              ) {
+                                                if (loadingProgress == null)
+                                                  return child;
+                                                return Container(
+                                                  width: 120,
+                                                  height: 140,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          12,
+                                                        ),
+                                                    color: Colors.grey[800],
+                                                  ),
+                                                  child: Image.asset(
+                                                    '/assets/img/logo.png',
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                );
+                                              },
+                                          errorBuilder:
+                                              (context, error, stackTrace) {
+                                                return Container(
+                                                  width: 120,
+                                                  height: 140,
+                                                  decoration: BoxDecoration(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                          12,
+                                                        ),
+                                                    color: Colors.grey[800],
+                                                  ),
+                                                  child: Image.asset(
+                                                    'assets/img/logo.png',
+                                                    fit: BoxFit.contain,
+                                                  ),
+                                                );
+                                              },
                                         ),
                                       ),
                                       const SizedBox(height: 6),
