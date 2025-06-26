@@ -13,7 +13,13 @@ A modern Flutter application for streaming TV content with a beautiful and intui
 
 ## 📱 Screenshots
 
-*[Add screenshots of your app here]*
+## 📱 Screenshots
+
+<p align="center">
+  <img src="[screenshots/home_screen.png](https://drive.google.com/file/d/1Z434Gk8tJnksIDd7rd7zeimNprhcgdZ1/view?usp=sharing)" alt="Home Screen" height="300"/>
+  <img src="screenshots/profile_screen.png" alt="Profile Screen" height="300"/>
+</p>
+
 
 ## 🛠️ Tech Stack
 
