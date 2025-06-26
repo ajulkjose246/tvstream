@@ -11,15 +11,6 @@ A modern Flutter application for streaming TV content with a beautiful and intui
 - **Modern UI**: Material Design with smooth animations and transitions
 - **Asset Management**: Efficient handling of video and image assets
 
-## 📱 Screenshots
-
-## 📱 Screenshots
-
-<p align="center">
-  <img src="[https://drive.google.com/file/d/1Z434Gk8tJnksIDd7rd7zeimNprhcgdZ1/view?usp=sharing](https://drive.google.com/file/d/1Z434Gk8tJnksIDd7rd7zeimNprhcgdZ1/view?usp=sharing)" alt="Home Screen" height="300"/>
-  <img src="screenshots/profile_screen.png" alt="Profile Screen" height="300"/>
-</p>
-
 
 ## 🛠️ Tech Stack
 
